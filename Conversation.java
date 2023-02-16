@@ -49,21 +49,19 @@ class Conversation {
             convo_input = input.nextLine();
             transcript.add(convo_input);
             conversation.add(convo_input);
-            // check for mirror words
-            boolean i_mirror = convo_input.contains("i ");
-            boolean am_mirror = convo_input.contains("am ");
+            
   
           // if mirror words present, replace
-          if (i_mirror == true) {
-            String convo =  convo_input.replace("i ", " you ");
-            if (am_mirror == true) {
-              convo =  convo.replace("am ", " are ");
-              }
-
+          if (convo_input.contains("i ") || convo_input.contains(" i ") || convo_input.contains(" me") || convo_input.contains("am ") || convo_input.contains("my ")){
+            String convo =  convo_input.replace("i ", " you "); 
+            convo =  convo.replace("am ", " are ");
+            convo =  convo.replace(" me", " you ");
+            convo =  convo.replace("my ", " your ");
+            
             System.out.print(convo);
             System.out.println("?");
             transcript.add(convo + "?");
-            }
+          }
             
             else {
             System.out.println(responses[index]);
